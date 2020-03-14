@@ -10,7 +10,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                include: path.resolve(__dirname, "client/src/index.jsx"),
+                include: path.resolve(__dirname, "client/src/"),
                 loader: "babel-loader",
                 options: {
                     presets: ["@babel/preset-env", "@babel/preset-react"]
