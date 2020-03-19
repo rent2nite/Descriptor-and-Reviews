@@ -6,15 +6,26 @@ This repository will handle the all the descriptions and reviews for each of the
 
 
 Related Projects
+https://github.com/rent2nite/Recommendations
+https://github.com/rent2nite/reservations
+https://github.com/rent2nite/Main-Gallery
 
 Table of Contents 
 
 1. Usage
--Instructions (FILL_ME_IN)
 2. Requirements
-(FILL_ME_IN)
 3. Development
-(FILL_ME_IN)
+
+
+USAGE 
+Some usage instructions 
+
+REQUIEREMENTS
+
+DEVELOPMENTS
+
+npm install -D @babel/core @babel/preset-env @babel/preset-react
+npm install babel-loader body-parser express jquery react react-dom webpack webpack-cli
 
 
 

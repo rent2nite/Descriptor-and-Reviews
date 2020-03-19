@@ -25,7 +25,6 @@ let save = (houses, callback) => {
         if (err) {
             return console.log(err)
         } else{
-            // callback(null)
             console.log('success from save')
             // callback(null, houses)
         }
@@ -44,3 +43,21 @@ let find = (callback) => {
 
 module.exports.save = save;
 module.exports.find = find;
+
+/*
+host: String,
+houseName: String,
+overview : {
+    Capacity: {
+        Guests: Number,
+        Bedrooms: Number,
+        Beds: Number,
+        Baths: Number
+    }
+    FeaturingDesc: 
+    Amenities: [String],
+    TextDesc: String,
+}
+
+
+*/

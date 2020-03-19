@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
+import Overview from './Overview.jsx';
+import Reviews from './Reviews.jsx';
 
 class App extends React.Component {
     constructor(props){
@@ -26,10 +27,24 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>HelloWorld</div> 
+            <div>
+            <div>
+                <Overview />
+            </div> 
+            <div>
+                <Reviews />
+            </div>
+            </div>
         );
     }
 }
 
 export default App;
+
+
+
+//componenet for overview
+//component for reviews 
+
+//componente para rating (cuantas estrellas)
 

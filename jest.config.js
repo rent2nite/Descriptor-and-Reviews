@@ -1,6 +1,10 @@
 module.exports = {
     // Automatically clear mock calls and instances between every test
     clearMocks: true,
+
+    moduleDirectories: [
+      'node_modules',
+    ],
   
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
@@ -15,7 +19,11 @@ module.exports = {
     setupFiles: ['<rootDir>/enzyme.config.js'],
   
     // The test environment that will be used for testing
-    testEnvironment: 'jsdom',
+    testEnvironment: 'enzyme',
+
+    testEnvironmentOptions: {
+      enzymeAdapter: 'react16'
+    },
   
     // The glob patterns Jest uses to detect test files
     testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
@@ -30,5 +38,12 @@ module.exports = {
     transformIgnorePatterns: ['<rootDir>/node_modules/'],
     
     // Indicates whether each individual test should be reported during the run
-    verbose: false,
+    verbose: true,
+
+    transform: {
+        '^.+\\.js$': 'babel-jest',
+        '^.+\\.jsx$': 'babel-jest',
+      
+    }
+
   };
