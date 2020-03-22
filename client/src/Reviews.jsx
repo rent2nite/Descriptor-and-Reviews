@@ -1,4 +1,14 @@
 import React from 'react';
+import ReviewList from './ReviewList.jsx';
+import ReviewsScore from './ReviewsScore.jsx';
+
+
+import styled from 'styled-components';
+
+
+const Root = styled.div`
+font-family: sans-serif
+`
 
 
 class Reviews extends React.Component {
@@ -7,15 +17,16 @@ class Reviews extends React.Component {
     }
     render() {
         return (
-            <div>
+            <Root>
                 <h2>Reviews</h2>
                 <div>
-                    <div>Review Score - Number of Reviews</div>
-                    <div>Search Bar</div>
+                    <ReviewsScore />
                 </div>
-                <div>List of Reviews</div>
-                <div>Page review buttons</div>
-            </div>
+                <div>
+                    <ReviewList />
+                </div>
+                <button>Page review buttons</button>
+            </Root>
         )
     }
 }

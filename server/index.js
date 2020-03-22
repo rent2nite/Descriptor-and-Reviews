@@ -4,7 +4,7 @@ const db = require('../db/index.js');
 // const seeder = require('../seed.js');
 const Model = require('./models.js');
 
-const port = 1048;
+const port = 1000;
 const bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/../client/dist'));

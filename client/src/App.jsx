@@ -3,9 +3,15 @@ import axios from 'axios';
 import Overview from './Overview.jsx';
 import Reviews from './Reviews.jsx';
 
+import styled from 'styled-components';
+
+const Root = styled.div`
+margin-left: 100px
+`
+
 class App extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             houses: []
         }
@@ -17,24 +23,28 @@ class App extends React.Component {
             url: "/houses",
         })
         .then ((response) => {
-            console.log(response);
-            this.setState({houses: response})
+            // console.log(response);
+            this.setState({houses: response.data[0]})
+            // console.log(this)
+
         })
         .catch(e => console.log(e))
     }
 
 
 
+
+
     render() {
         return (
+            <Root>
             <div>
-            <div>
-                <Overview />
+                <Overview house={this.state.houses}/>
             </div> 
             <div>
                 <Reviews />
             </div>
-            </div>
+            </Root>
         );
     }
 }

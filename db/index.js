@@ -9,17 +9,27 @@ db.once('open', () => {
     console.log('connection from database');
 })
 
+
+
 let houseSchema = mongoose.Schema({
     id: Number,
     host: String,
+    houseName: String,
     overview: String,
     location: String,
-    policies: String
+    houseSpecs: {
+        guests: Number,
+        bedrooms: Number,
+        beds: Number,
+        baths: Number
+    },
+    highlights: []
 });
 
 let House = mongoose.model('House', houseSchema);
 
 let save = (houses, callback) => {
+
     var newHouse = new House (houses);
     newHouse.save((err, newHouse) => {
         if (err) {
