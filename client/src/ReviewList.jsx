@@ -7,21 +7,26 @@ margin: 20px
 `
 
 const HighlightItemImg = styled.img`
-heigth: 40px;
-width: 40px
+heigth: 15px;
+width: 15px;
+margin-right: 20px
 `
 
-const ReviewList = () => {
+const ReviewContainer = styled.div`
+margin-right: 20px
+`
+
+const ReviewList = ({review}) => {
     return (
         <Root>
-            <div>
-                <HighlightItemImg src='https://image.flaticon.com/icons/png/512/69/69524.png'/>
-                <span>Nombre</span>
-                <span>Fecha</span>
-            </div>
-            <p>
-                Todo el reesto de texto - Review
-            </p>
+            <ReviewContainer>
+                <HighlightItemImg src='https://toppng.com/public/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png'/>
+                <span>{review.name}</span>
+                <div>
+                <span>{review.date}</span>
+                </div>
+            </ReviewContainer>
+            <p>{review.review}</p>
         </Root>
     )
 }

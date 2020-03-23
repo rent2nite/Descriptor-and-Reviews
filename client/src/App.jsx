@@ -13,8 +13,11 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            houses: []
+            houses: [],
+            reviews: []
         }
+
+        this.nextPlace = this.nextPlace.bind(this);
     }
 
     componentDidMount() {
@@ -23,10 +26,32 @@ class App extends React.Component {
             url: "/houses",
         })
         .then ((response) => {
-            // console.log(response);
-            this.setState({houses: response.data[0]})
-            // console.log(this)
+            this.setState({houses: response.data[6]})
+            this.getReviews(this.state.houses.id)
+            console.log(this.state.houses)
+        })
+        .catch(e => console.log(e))
+    }
 
+    getReviews(data) {
+        axios({
+            method: "get",
+            url: `/reviews?${data}`
+        })
+        .then ((response) => {
+            this.setState({ reviews: response.data})
+        })
+        .catch(e => console.log(e))
+    }
+
+    nextPlace(data) {
+        axios({
+            method: "get",
+            url: `/houses?${data}`
+        })
+        .then ((response) => {
+            this.setState({houses: response.data})
+            this.getReviews(this.state.houses.id)
         })
         .catch(e => console.log(e))
     }
@@ -42,7 +67,7 @@ class App extends React.Component {
                 <Overview house={this.state.houses}/>
             </div> 
             <div>
-                <Reviews />
+                <Reviews reviews={this.state.reviews} nextPlace={this.nextPlace}/>
             </div>
             </Root>
         );

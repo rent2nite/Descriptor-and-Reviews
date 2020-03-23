@@ -10,9 +10,11 @@ const bodyParser = require('body-parser');
 app.use(express.static(__dirname + '/../client/dist'));
 
 
+
 // url 
 
 app.get('/houses', (req, res) => {
+    let query = req._parsedOriginalUrl.query
     Model.get((err, data) => {
         if (err) {
             res.status(400).end();
@@ -20,6 +22,18 @@ app.get('/houses', (req, res) => {
             res.send(data);
         }
     })
+})
+
+app.get('/reviews', (req, res) => {
+    console.log(req._parsedOriginalUrl.query)
+    let query = req._parsedOriginalUrl.query
+    Model.getReviews((err, data) => {
+        if (err) {
+            res.status(400).end()
+        } else {
+            res.send(data)
+        }
+    }, query)
 })
 
 

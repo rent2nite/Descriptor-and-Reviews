@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ReviewScore = styled.span`
-margin-right: 15px;
+margin-right: 50px;
 `
 
 const ReviewImg = styled.img`
@@ -18,7 +18,7 @@ margin-left: 300px
 
 const ReviewScoreCont = styled.div`
 margin: 20px;
-width:1000px
+width:1000px;
 `
 
 const ReviewScoreDesc = styled.span`
@@ -30,12 +30,12 @@ margin-bottom: 20px
 const ReviewScoreBar = styled.span`
 width: 90%;
 display: block;
-height: 10px;
+height: 5px;
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
 border-top-left-radius: 20px;
 border-bottom-left-radius: 20px;
-background-color: rgb(43,194,83);
+background-color: rgb(70,130,180);
 background-image: linear-gradient(
   center bottom,
   rgb(43,194,83) 37%,
@@ -59,26 +59,52 @@ border-radius: 25px;
 padding: 0px;
 box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
 display: inline-block;
-text-align: center;
 margin-right: 100px
 `
 
-const ReviewsScore = () => {
+const ScoreCont = styled.div`
+margin-bottom: 40px;
+`
+
+const ReviewsScore = ({ review }) => {
+    if (review.length > 0) {
+        var score = 0;
+        for (var i = 0; i < review.length; i++) {
+            var rev = review[i];
+            let sum = rev.reviewScore.location;
+            sum += rev.reviewScore.value;
+            sum += rev.reviewScore.cleanliness;
+            sum += rev.reviewScore.communication;
+            sum += rev.reviewScore.checkin;
+            sum += rev.reviewScore.accuracy;
+            // console.log(sum)
+            score += (sum / 6)
+        }
+        score /= review.length;
+        var renderScore = Math.round(score * 100) / 100 ;
+    }
+    // var renderScore = Math.round(score * 100) / 100 ;
+    // console.log(renderScore)
+    var reviewNum = 'review';
+    if (review.length > 1) {
+        reviewNum = 'reviews';
+    }
+
     return (
         <div>
             <div>
-            <ReviewImg src='https://webcomicms.net/sites/default/files/clipart/129621/blue-star-129621-7952357.gif' />
-            <ReviewScore>4.9</ReviewScore>
-            <ReviewScore>200</ReviewScore>
-            <span>
-                <ReviewSearch></ReviewSearch>
-            </span>
+                <ReviewImg src='https://webcomicms.net/sites/default/files/clipart/129621/blue-star-129621-7952357.gif' />
+                <ReviewScore>{renderScore}</ReviewScore>
+                <ReviewScore>{review.length +  '  ' + reviewNum} </ReviewScore>
+                <span>
+                    <ReviewSearch></ReviewSearch>
+                </span>
             </div>
-            <div>
+            <ScoreCont>
                 <ReviewScoreCont>
                     <ReviewScoreDesc>Location</ReviewScoreDesc>
                     <Test>
-                    <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar></ReviewScoreBar>
                     </Test>
                     <ReviewScoreDesc>Communication</ReviewScoreDesc>
                     <Test>
@@ -88,7 +114,7 @@ const ReviewsScore = () => {
                 <ReviewScoreCont>
                     <ReviewScoreDesc>Accuracy</ReviewScoreDesc>
                     <Test>
-                    <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar></ReviewScoreBar>
                     </Test>
                     <ReviewScoreDesc>Check-In</ReviewScoreDesc>
                     <Test>
@@ -98,16 +124,33 @@ const ReviewsScore = () => {
                 <ReviewScoreCont>
                     <ReviewScoreDesc>Cleanliness</ReviewScoreDesc>
                     <Test>
-                    <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar></ReviewScoreBar>
                     </Test>
                     <ReviewScoreDesc>Value</ReviewScoreDesc>
                     <Test>
                         <ReviewScoreBar></ReviewScoreBar>
                     </Test>
                 </ReviewScoreCont>
-            </div>
+            </ScoreCont>
         </div>
     )
 }
 
 export default ReviewsScore;
+
+
+// if (review) {
+//     var score = 0;
+//     for (var i = 0; i < review.length; i++) {
+//         var rev = review[i];
+//         let sum = rev.reviewScore.location;
+//         sum += rev.reviewScore.value;
+//         sum += rev.reviewScore.cleanliness;
+//         sum += rev.reviewScore.communication;
+//         sum += rev.reviewScore.checkin;
+//         sum += rev.reviewScore.accuracy;
+
+//         score += (sum / 6)
+//     }
+//     console.log(review[0].reviewScore.location)
+// }

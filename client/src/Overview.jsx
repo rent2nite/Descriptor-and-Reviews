@@ -35,46 +35,18 @@ heigth: 25px;
 width: 25px
 `
 
-// class Overview extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//         }
-//         console.log(props)
-//     }
-
-//     render() {
-//         return (
-//             <Root>
-//                 <div>
-//                     <Header />
-//                     <div>
-//                         <img />
-//                         <p>Name</p>
-//                     </div>
-//                 </div>
-//                 <div>
-//                     <HighlightList />
-//                 </div>
-//                 <p>Text description</p>
-//                 <div>Amenities</div>
-//             </Root>
-//         )
-//     }
-// }
-
 
 
 
 const Overview = ({house}) => {
-    console.log(house)
+    // console.log(house)
     return (
         <Root>
             <div>
                 <Header house={house}/>
             </div>
             <div>
-                <HighlightList />
+                <HighlightList highlights={house.highlights}/>
             </div>
             <p>{house.overview}</p>
             <div>Amenities</div>
@@ -84,13 +56,3 @@ const Overview = ({house}) => {
 
 export default Overview;
 
-
-// <HighlightItem>
-// <HighlightItemImgCont>
-//     <HighlightItemImg src='https://image.flaticon.com/icons/png/512/69/69524.png'/>
-// </HighlightItemImgCont>
-// <HighlightItemRight>
-//     <HighlightItemTitle>Titulo</HighlightItemTitle>
-//     <HighlightItemText>description</HighlightItemText>
-// </HighlightItemRight>
-// </HighlightItem>
