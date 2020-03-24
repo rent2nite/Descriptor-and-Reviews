@@ -18,19 +18,21 @@ margin-left: 300px
 
 const ReviewScoreCont = styled.div`
 margin: 20px;
-width:1000px;
+width:800px;
+display: flex
 `
 
 const ReviewScoreDesc = styled.span`
-margin-right: 100px;
+margin-right: 20px;
 width: 300px;
 margin-bottom: 20px
 `
 
+
 const ReviewScoreBar = styled.span`
-width: 90%;
+width: ${(props) => (props.primary ? `${props.primary * 20}%` : '10%')};
 display: block;
-height: 5px;
+height: 10px;
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
 border-top-left-radius: 20px;
@@ -85,11 +87,14 @@ const ReviewsScore = ({ review }) => {
     }
     // var renderScore = Math.round(score * 100) / 100 ;
     // console.log(renderScore)
-    var reviewNum = 'review';
-    if (review.length > 1) {
-        reviewNum = 'reviews';
+    var reviewNum = 'reviews';
+    if (review.length === 1) {
+        reviewNum = 'review';
     }
+    // console.log(review[0], 'review');
 
+
+    
     return (
         <div>
             <div>
@@ -104,21 +109,21 @@ const ReviewsScore = ({ review }) => {
                 <ReviewScoreCont>
                     <ReviewScoreDesc>Location</ReviewScoreDesc>
                     <Test>
-                        <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar primary={review.length > 0 ? review[0].reviewScore.location : 0}></ReviewScoreBar>
                     </Test>
                     <ReviewScoreDesc>Communication</ReviewScoreDesc>
                     <Test>
-                        <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar primary={review.length > 0 ? review[0].reviewScore.location : 0}></ReviewScoreBar>
                     </Test>
                 </ReviewScoreCont>
                 <ReviewScoreCont>
                     <ReviewScoreDesc>Accuracy</ReviewScoreDesc>
                     <Test>
-                        <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar primary={review.length > 0 ? review[0].reviewScore.location : 0}></ReviewScoreBar>
                     </Test>
                     <ReviewScoreDesc>Check-In</ReviewScoreDesc>
                     <Test>
-                        <ReviewScoreBar></ReviewScoreBar>
+                        <ReviewScoreBar primary={review.length > 0 ? review[0].reviewScore.location : 0}></ReviewScoreBar>
                     </Test>
                 </ReviewScoreCont>
                 <ReviewScoreCont>

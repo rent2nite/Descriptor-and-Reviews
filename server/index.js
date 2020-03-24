@@ -15,17 +15,17 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/houses', (req, res) => {
     let query = req._parsedOriginalUrl.query
+    // console.log(query)
     Model.get((err, data) => {
         if (err) {
             res.status(400).end();
         } else {
             res.send(data);
         }
-    })
+    }, query)
 })
 
 app.get('/reviews', (req, res) => {
-    console.log(req._parsedOriginalUrl.query)
     let query = req._parsedOriginalUrl.query
     Model.getReviews((err, data) => {
         if (err) {

@@ -75,7 +75,30 @@ let saveReviews = (reviews, callback) => {
 }
 
 let find = (callback, query) => {
+    if (query === undefined) {
+        // console.log(query)
+        Review.find({ id : query}, (err, data) => {
+            if (err) {
+                callback(err);
+            } else {
+                callback(null, data)
+            }
+        })
+    } else {
+        House.find({ id: query }, (err, data) => {
+            if (err) {
+                callback(err);
+            } else {
+                callback(null, data)
+            }
+        })
+
+    }
+}
+
+let findReviews = (callback, query) => {
     if (query !== undefined) {
+        // console.log(query)
         Review.find({ id : query}, (err, data) => {
             if (err) {
                 callback(err);
@@ -95,9 +118,11 @@ let find = (callback, query) => {
     }
 }
 
+
 module.exports.save = save;
 module.exports.find = find;
 module.exports.saveReviews = saveReviews;
+module.exports.findReviews = findReviews;
 
 /*
 host: String,

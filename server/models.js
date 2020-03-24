@@ -2,11 +2,11 @@ const seeder = require('../seed.js');
 const db = require('../db/index.js');
 
 const Model = {
-    get: (callback) => {
-        db.find(callback)
+    get: (callback, query) => {
+        db.find(callback, query)
     },
     getReviews: (callback, query) => {
-        db.find(callback, query)
+        db.findReviews(callback, query)
     }
 }
 

@@ -17,6 +17,7 @@ class Reviews extends React.Component {
 
         this.nextHouse = this.nextHouse.bind(this);
         this.randomNum = this.randomNum.bind(this);
+    
 
     }
     randomNum() {
@@ -40,7 +41,7 @@ class Reviews extends React.Component {
                      <ReviewList review={review} key={key}/>
                 ))}
             </div>
-            <button>NEXT HOUSE</button>
+            <button onClick={this.nextHouse}>NEXT HOUSE</button>
         </Root>
         )
     }

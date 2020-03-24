@@ -18,17 +18,23 @@ class App extends React.Component {
         }
 
         this.nextPlace = this.nextPlace.bind(this);
+        this.randomNum = this.randomNum.bind();
+    }
+
+    randomNum() {
+        return Math.floor(Math.random() * 101);
     }
 
     componentDidMount() {
         axios({
             method: "get",
-            url: "/houses",
+            url: `/houses?${this.randomNum()}`
         })
         .then ((response) => {
-            this.setState({houses: response.data[6]})
+            // console.log(response.data)
+            this.setState({houses: response.data[0]})
+            
             this.getReviews(this.state.houses.id)
-            console.log(this.state.houses)
         })
         .catch(e => console.log(e))
     }
@@ -40,6 +46,7 @@ class App extends React.Component {
         })
         .then ((response) => {
             this.setState({ reviews: response.data})
+            // console.log(response)
         })
         .catch(e => console.log(e))
     }
@@ -50,8 +57,9 @@ class App extends React.Component {
             url: `/houses?${data}`
         })
         .then ((response) => {
-            this.setState({houses: response.data})
+            this.setState({houses: response.data[0]})
             this.getReviews(this.state.houses.id)
+            // console.log(response)
         })
         .catch(e => console.log(e))
     }
