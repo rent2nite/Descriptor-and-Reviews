@@ -7,7 +7,9 @@ This repository will handle the all the descriptions and reviews for each of the
 
 Related Projects
 https://github.com/rent2nite/Recommendations
+
 https://github.com/rent2nite/reservations
+
 https://github.com/rent2nite/Main-Gallery
 
 Table of Contents 
